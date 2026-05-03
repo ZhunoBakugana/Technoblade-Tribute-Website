@@ -1,0 +1,388 @@
+/*FONTS*/
+@font-face {
+    font-family: 'VT323';
+    src:url('fonts/VT323/VT323-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src:url('fonts/Press_Start_2P/PressStart2P-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Spartan';
+    src: url('fonts/LeagueSpartan-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Spartan';
+    src: url('fonts/LeagueSpartan-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Spartan';
+    src: url('fonts/LeagueSpartan-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*ELEMENTS*/
+
+/** {
+    box-sizing: border-box;
+}*/
+
+html{
+    scroll-behavior: smooth; /*I'm using this for relative linking. It makes the site scroll to the specific element instead of "teleporting" to it*/
+}
+
+body{
+    /*we get rid of the white border around the pages*/
+    margin: 0;
+    padding: 0;
+
+    background-color: black;
+    font-family: 'VT323', monospace;
+    font-weight: 400 ;
+    font-style: normal;
+}
+
+h1,h2{
+    font-family: 'Press Start 2P', system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    width: 100%;
+    height: auto;
+    /*font-size: 1rem;*/
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: pink;
+}
+
+p{
+    width: 100%;
+    height: auto;
+}
+
+/*main article{
+    border-style: none none solid none;
+    border-color: white;
+    padding-bottom: 1rem;
+}*/
+
+/*GRID*/
+.page{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/*HEADER*/
+.page_header{
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+
+    /*we make the header into a grid and split it into 2 even columns and then align all the children centerly.*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
+    background-color: #cf261f;
+    padding: 0 1rem 0 1rem;
+
+    /*makes the navbar "sticky"*/
+    position: sticky;
+    top: 0;
+}
+
+.header_logo{
+    grid-column: 1 / 2;
+}
+
+.header_logo img{
+    /*making it responsive while not being too big*/
+    width: 100%;
+    max-width: 120px;
+}
+
+.page_header nav {
+    grid-column: 2 / 3;
+    justify-items: end;/*we align the navbar items to the end line*/
+    
+}
+
+.page_header nav ul{
+    /*we create a grid in ul and order the items per column, making the navbar horizontal, with a gap between all children*/
+    display: grid;
+    grid-auto-flow:column ;
+    gap: 1rem;
+    padding-left: 0; /*I'm doing this because the media query navbar broke while using Firefox*/
+    
+    font-family: 'Spartan';
+    font-weight: 400;
+    font-style: normal;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav a{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/*HOME PAGE*/
+.primary_content{
+    grid-column: 1 / -1;
+    grid-row: 2 / 8; 
+}
+
+#techno_vid{
+    /*we make the video the "anchor" for the quote. allowing us to place the quote on top of it with z-index*/
+    position: relative;
+
+    max-width: 100%;
+    height: auto;
+}
+
+.compilation h1{
+    /*ensureing the quote stays in place and is on top of the video*/
+    position: absolute;
+    z-index: 1;
+
+    color: white;
+    font-size: 1.2rem;
+    width: 800px;
+    line-height: 2;
+    padding: 6rem;
+
+    /*to make the text more readable*/
+    text-shadow:3px 3.5px #d2312a;
+}
+
+.origins{
+    grid-column: 3 / 11;
+    grid-row: 8/12;
+}
+.origins article{
+    margin: 4rem 0 4rem 0;
+    line-height: 1.5;
+    
+    /*we make each article into a grid and center all its children*/
+    display: grid;
+    place-items: center;
+    scroll-margin-top: 200px; /* when we make the site scroll to an element, it will stop 200px above it*/
+}
+
+.origins article p{
+    color: white;
+    font-size: 1.3rem; 
+}
+.origins h1{
+    text-align: center;
+    color: white;
+}
+
+.origins h2{
+    text-align: center;
+    color: red;
+}
+
+.source{
+    vertical-align: text-bottom;
+    color: red;
+}
+
+.young_techno{
+
+    max-width: 50%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/*FOOTER*/
+.page_footer{
+    grid-column: 1 / -1;
+    grid-row: 12 / 13;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1rem 0 1rem;
+}
+
+.copyright{
+    grid-column: 1 / 2;
+    color: white;
+}
+
+.techno_socials{
+    grid-column: 2 / 3;
+    justify-self: end; /*the element aligns itself to the last column line*/
+}
+
+.techno_socials img{
+    height: auto;
+    width: 50px;
+}
+
+/*ACHIEVEMENTS PAGE*/
+
+.achievements{
+    grid-row: 2/12;
+}
+
+.achievements iframe{
+    width: 100%; /*keeps the video responsive*/
+    max-width: 560px;/*doesn't allow the video to be too big*/
+    aspect-ratio: 16 / 9;/*makes it so the video isnt streched*/
+}
+
+.align_center{
+    text-align: center;
+}
+
+/*we use flexbox to place the videos side by side and wrap them on smaller screens*/
+.hypixel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hypixel iframe{ /*making the grouped embeded videos smaller so they fit*/
+    max-width: 320px;
+}
+
+.hypixel a{
+    font-size: 1.5rem;
+}
+
+/*CAREER PAGE*/
+
+/*we need to be very specific defining the color for the link states due to the earlier global a{} rule which changes the color to white*/
+/*this means "find each a{} element in the parent element witht the a_color class and apply these colors based on their link states". we could also write e.g .a_color:link{} and directly affect the a{} elements instead*/
+.a_color a:link{ 
+    color: #cf261f;
+}
+
+.a_color a:visited{
+    color: lightblue;
+}
+
+.a_color a:hover{
+    color: pink;
+}
+
+.a_color a:active{
+    color: green;
+}
+
+.align_left{
+   justify-self: start;
+}
+
+.quotes{
+    /*we specifically tell the quotes to stay in the center as to avoid inconsistencies*/ 
+    justify-self: center;
+    text-align: center;
+}
+
+/*PERSONAL LIFE PAGE*/
+#techno_cite{
+    text-align: right;
+}
+
+/*MEDIA QUERIES*/
+
+/*min-width is for equal to or greater than
+while max-width is for equal to or less than */
+
+@media screen and (max-width: 1280px){ /*my layout stated consisted from 600px up to 1280px hence why im using only one breakpoint*/
+
+    .header_logo{
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        justify-self: center;
+    }
+
+    .header_logo img{
+        max-width: 80px;
+    }
+
+    .page_header{
+        padding: 0;
+        position:unset;/*we make the navbar "unsticky" because it would cover too much content*/
+    }
+
+    .page_header nav{
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+    }
+
+    .page_header nav ul{
+        grid-auto-flow: row;/*we align the navbar items per row as to fit everything on the screen*/
+        text-align: center;
+        width: 100%;/*we make the ul strech from the start to the end line which would allow our bottom-border to do the same*/
+    }
+
+    nav li{
+        border-style: none none solid none;
+        border-color: white;
+        padding: 0.3rem 0 0.3rem 0;
+    }
+
+
+    .last_li{/*the last ul li's border was inconsistent so I got rid of it and remove any bottom padding as to save some space*/
+        border-style: none;
+        padding-bottom: 0;
+    }
+    
+    .compilation h1{/*the quote was taking up too much of the video. and even when I made it smaller it wouldn't be very readable, so I got rid of it completely*/
+        display: none;
+    }
+    
+    .young_techno{/*the pictures were a bit too small so I adjusted them*/
+        max-width: 70%;
+    }
+
+    .hypixel iframe{/*I just wanted to fit all videos in as less rows as possible*/
+        max-width: 180px;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1280px){/*the iframes were a bit too small for between this width so I adjusted it's value*/
+    .hypixel iframe{
+        max-width: 310px;
+    }    
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1400px){/*the longer navbar names would collapse between this width, so I gave more space to the navbar grid column */
+    .page_header{
+         grid-template-columns: 1fr 2fr;
+    }
+}
+
+@media screen and (max-width: 500px){/*the h1 was overflowing to the right from 470px and downward so I'm adjusting the font-size for smaller screens*/
+    h1{
+        font-size: 1.2rem;
+    }
+
+    .hypixel iframe{/*I just wanted to fit all videos in as less rows as possible*/
+        max-width: 90px;
+    }
+}
